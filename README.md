@@ -1,27 +1,26 @@
-# TravelClientFe
+# TravelClientAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
-## Development server
+#Crea nuovo progetto Angular
+ng new fincons-academy --prefix fin --skip-git --skip-tests
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#Fai partire l'app Angular
+ng serve
 
-## Code scaffolding
+#Albero di chiamata di un'app Angular
+main.ts -> module.ts -> component1.ts
+		     -> component2.ts
+		     ...
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#Creare un componente (dall'interno della sottocartella in cui si vuole creare il componente)
+ng g c nome_componente --skip-tests
 
-## Build
+#Creare un modulo (dall'interno della sottocartella in cui si vuole creare il modulo)
+ng g m nome_modulo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#Struttura di /app
+-> features (contiene i moduli della nostra applicazione)
+-> core
+-> shared (con al suo interno /components e /model e shared.module.ts)
