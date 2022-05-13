@@ -1,0 +1,65 @@
+<div class="card">
+  <h1>Modulo di registrazione</h1>
+  <form
+    #signupForm="ngForm"
+    (submit)="completeSignupForm(signupForm)"
+  >
+    <div class="centered">
+      <label> Email </label><br />
+      <input
+        type="mail"
+        name="campoEmail"
+        #refEmail="ngModel"
+        [ngModel]="currentEmail"
+        required
+      /><br />
+      <small class="error-msg" *ngIf="refEmail.touched && refEmail.invalid"
+        >L'email e' obbligatoria</small
+      >
+    </div>
+    <div class="centered">
+      <label> Password </label><br />
+      <input
+        type="password"
+        name="campoPassword"
+        #refPassword="ngModel"
+        [ngModel]="currentPassword"
+        required
+      /><br />
+      <small class="error-msg" *ngIf="refPassword.touched && refPassword.invalid"
+        >La password e' obbligatoria</small
+      >
+    </div>
+    <div class="centered">
+      <label> Conferma Password </label><br />
+      <input
+        type="password"
+        name="confermaPassword"
+        #refConfermaPassword="ngModel"
+        [ngModel]="confirmPassword"
+        required
+      /><br />
+      <small
+        class="error-msg"
+        *ngIf="
+          refPassword.value != refConfermaPassword.value &&
+          refConfermaPassword.value.length != 0
+        "
+        >Le password non coincidono</small
+      >
+    </div>
+    <input
+      class="centered"
+      type="submit"
+      value="Registrati"
+      [disabled]="
+        refPassword.invalid || refEmail.invalid ||
+        refPassword.value != refConfermaPassword.value
+      "
+    /><br />
+    <small class="error-msg" *ngIf="alreadyExist"
+      >Questo utente è già registrato sul sito!</small
+    >
+  </form>
+  <button (click)="goToLogin()">Torna al login</button>
+</div>

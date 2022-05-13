@@ -1,0 +1,28 @@
+label, input {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 1%;
+}
+
+.error-msg {
+    margin-top: 2vh;
+    color: red;
+}
+
+.card {
+    margin-top: 10vh;
+}
+
+.reservationButton {
+    font-size: large;
+    margin-top: 2%;
+}
+
+.date {
+    font-size: x-large;
+}

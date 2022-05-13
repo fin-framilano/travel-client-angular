@@ -1,0 +1,20 @@
+.error-msg {
+    color: blueviolet;
+}
+
+.card {
+    text-align: center;
+}
+
+.centered {
+    text-align: center;
+    margin-top: 1%;
+}
+
+.signupButton {
+    margin-top: 1%;
+}
+
+.admin-title {
+    text-align:centered;
+}

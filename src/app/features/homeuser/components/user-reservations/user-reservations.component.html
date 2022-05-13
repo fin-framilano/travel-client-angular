@@ -1,0 +1,8 @@
+<fin-list-items
+            [listOptions]= "['Elimina']"
+            [title]="'Prenotazioni effettuate'"
+            [listItems] = "reservationsList"
+            [listHeader] = "reservationsListHeaders"
+            [listKeys] = "reservationsKeys"
+            (deleteEvent)="deleteHandler($event)"
+></fin-list-items>

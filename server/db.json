@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "mail": "ciao@gmail.com",
+      "password": "1234",
+      "role": 1
+    },
+    {
+      "id": 2,
+      "mail": "pippo_admin@gmail.com",
+      "password": "1234",
+      "role": 2
+    },
+    {
+      "id": 3,
+      "mail": "francesco.milano@finconsgroup.com",
+      "password": "123",
+      "role": 1
+    },
+    {
+      "id": 4,
+      "mail": "123456",
+      "password": "123456",
+      "role": 1
+    }
+  ],
+  "packets": [
+    {
+      "id": 2,
+      "nomePacchetto": "Vacanza per ricchi",
+      "city": "Stazione spaziale",
+      "mezzoTrasporto": "Macchina",
+      "costo": 50
+    },
+    {
+      "id": 4,
+      "nomePacchetto": "Pippo!",
+      "mezzoTrasporto": "Treno",
+      "city": "123",
+      "costo": 12
+    },
+    {
+      "id": 6,
+      "nomePacchetto": "Ciao!",
+      "mezzoTrasporto": "Nave",
+      "city": "Cosenza",
+      "costo": 1002
+    }
+  ],
+  "reservations": [
+    {
+      "id": 3,
+      "id_user": 1,
+      "id_packet": 2,
+      "start_date": "10/05/2022",
+      "end_date": "17/05/2022",
+      "nr_people": 2
+    },
+    {
+      "id": 10,
+      "id_user": "1",
+      "id_packet": "5",
+      "start_date": "04-05-2022",
+      "end_date": "28-05-2022",
+      "nr_people": 5
+    },
+    {
+      "id": 11,
+      "id_user": "1",
+      "id_packet": "2",
+      "start_date": "12-05-2022",
+      "end_date": "21-05-2022",
+      "nr_people": 5
+    }
+  ]
+}

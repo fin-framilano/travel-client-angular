@@ -1,0 +1,13 @@
+<h2>{{title}}</h2>
+
+<table class="table_selector">
+  <th *ngFor="let header of listHeader">{{header}}</th>
+  <tr *ngFor="let item of listItems">
+    <td *ngFor="let key of listKeys">
+      {{item[key]}}
+    </td>
+    <td><a *ngFor="let option of listOptions" 
+      (click)="optionHandler(item, option)" 
+      href="javascript:void(0)">{{option}}</a></td>
+  </tr>
+</table>

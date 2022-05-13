@@ -1,0 +1,11 @@
+<div>
+    <h1>Questa e' la lista delle Prenotazioni</h1>
+    <fin-list-items
+      [listItems] = "ReservationsList"
+      [listHeader] = "reservationsListHeaders"
+      [listKeys] ="reservationsKeys"
+      [listOptions] ="['Elimina']"
+      (deleteEvent)="cancellaPrenotazione($event)"
+      >
+    </fin-list-items>
+  </div>

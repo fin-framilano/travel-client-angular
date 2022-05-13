@@ -1,0 +1,59 @@
+<h1 class="admin-title">Creazione Nuovo Pacchetto</h1>
+<form class="card" #packetForm="ngForm" (submit)="packetCreation(packetForm)">
+  <div>
+    <div class="centered">
+      <label> Nome </label><br />
+      <input
+        type="text"
+        name="campoNome"
+        #refNome="ngModel"
+        [ngModel]="insertedCity"
+        required
+      /><br />
+    </div>
+    <div class="centered">
+      <label> Scegli il veicolo </label><br />
+      <select name="campoVeicolo" placeholder="Treno" [(ngModel)]="insertedVehicle">
+        <option *ngFor="let vehicle of vehicleOptions" [value]="vehicle">
+          {{vehicle}}
+        </option>
+    </select><br />
+    </div>
+    <div class="centered">
+      <label> Città </label><br />
+      <input
+        type="text"
+        name="campoCity"
+        #refCity="ngModel"
+        [ngModel]="insertedCity"
+        required
+      /><br />
+    </div>
+    <div class="centered">
+      <label> Costo </label><br />
+      <input
+        type="number"
+        name="campoCosto"
+        #refCosto="ngModel"
+        [ngModel]="insertedCost"
+        required
+      /><br />
+    </div>
+  </div>
+  <input class="centered" type="submit" value="Aggiungi il Pacchetto" /><br />
+  <small class="error-msg" *ngIf="isNotValid"
+    >Ricontrolla i campi del form!</small
+  ><br />
+</form>
+
+<div>
+  <h1>Questa e' la lista dei pacchetti creati</h1>
+  <fin-list-items
+    [listItems]="packetsList"
+    [listHeader]="listPacketsHeaders"
+    [listKeys]="listPacketKeys"
+    [listOptions]="['Elimina']"
+    (deleteEvent)="cancellaPacchetto($event)"
+  >
+  </fin-list-items>
+</div>

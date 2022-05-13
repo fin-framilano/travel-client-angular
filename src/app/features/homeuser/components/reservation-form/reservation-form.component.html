@@ -1,0 +1,38 @@
+<div class="card">
+  <form #reservationForm="ngForm" (submit)="createReservation(reservationForm)">
+    <label>Data partenza:</label>
+    <input class="date"
+      type="date"
+      name="dataInizio"
+      #refDataInizio="ngModel"
+      [ngModel]="startDate"
+    />
+
+    <label>Data ritorno:</label>
+    <input class="date"
+      type="date"
+      name="dataFine"
+      #refDataFine="ngModel"
+      [ngModel]="endDate"
+    />
+
+    <label>Numero viaggiatori: {{ nPeople }}</label>
+    <input
+      (input)="nPeople = refNumeroPersone.value"
+      type="range"
+      placeholder="1"
+      min="1"
+      max="10"
+      step="1"
+      name="numeroPersone"
+      #refNumeroPersone="ngModel"
+      [ngModel]="nPeople"
+    />
+
+    <input class="reservationButton" type="submit" value="Prenota! 💸" />
+
+    <div class="error-msg" *ngIf="invalidDates"
+      >Inserisci delle date valide!
+    </div>
+  </form>
+</div>
