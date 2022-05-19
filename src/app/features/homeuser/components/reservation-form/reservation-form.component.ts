@@ -71,11 +71,11 @@ export class ReservationFormComponent implements OnInit {
 
     const newReservation: Reservation = {
       id: 0,
-      id_user: this.currentUserId,
-      id_packet: this.currentPacketId,
-      start_date: this.formatDateString(reservationForm.value.dataInizio),
-      end_date: this.formatDateString(reservationForm.value.dataFine),
-      nr_people: reservationForm.value.numeroPersone,
+      userId: this.currentUserId,
+      packetId: this.currentPacketId,
+      startDate: this.formatDateString(reservationForm.value.dataInizio),
+      endDate: this.formatDateString(reservationForm.value.dataFine),
+      nrPeople: reservationForm.value.numeroPersone,
     };
     this.reservationService.createReservation(newReservation).subscribe(
       () => {

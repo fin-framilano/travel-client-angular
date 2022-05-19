@@ -17,14 +17,20 @@ export class ListPrenotazioniContainerComponent implements OnInit {
   ReservationsList: Reservation[] = []
   reservationsListHeaders: string[] =
     ["ID", "ID Utente", "ID Pacchetto", "Data Partenza", "Data Ritorno", "Numero Partecipanti", "Opzioni"]
-  reservationsKeys: string[] =
-    ["id", "id_user", "id_packet", "start_date", "end_date", "nr_people"]
+  reservationsKeys: string[] = [
+    'id',
+    'userId',
+    'packetId',
+    'startDate',
+    'endDate',
+    'nrPeople',
+  ];
 
   constructor(
     private router: Router,
-    
+
     private reservationService: ReservationService
-  ) { 
+  ) {
     this.reservationService.getAllReservations().subscribe(
       result => {
         this.ReservationsList = result

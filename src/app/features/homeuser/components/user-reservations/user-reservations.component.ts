@@ -21,11 +21,11 @@ export class UserReservationsComponent implements OnInit {
   ];
   reservationsKeys: string[] = [
     'id',
-    'id_user',
-    'id_packet',
-    'start_date',
-    'end_date',
-    'nr_people',
+    'userId',
+    'packetId',
+    'startDate',
+    'endDate',
+    'nrPeople',
   ];
 
   reservationsList: Reservation[] = [];
@@ -53,10 +53,7 @@ export class UserReservationsComponent implements OnInit {
       .getAllReservationsByUserId(this.currentUserId)
       .subscribe(
         (result) => {
-          for (let index = 0; index < result.length; index++) {
-            const reservation = result[index];
-            this.reservationsList.push(reservation);
-          }
+          this.reservationsList = result;
         },
         (error) => {
           console.log(error);

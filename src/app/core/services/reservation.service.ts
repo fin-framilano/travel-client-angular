@@ -23,13 +23,13 @@ export class ReservationService {
     return this.http.delete<any>(url);
   }
 
-  public createReservation(reservation:Reservation):Observable<Reservation>{
-    const url = environment.baseUrl + '/reservations/'
-    return this.http.post<Reservation>(url,reservation)
+  public createReservation(reservation:Reservation):Observable<number>{
+    const url = environment.baseUrl + '/reservations'
+    return this.http.post<number>(url,reservation)
   }
   
   public getAllReservations(): Observable<Reservation[]> {
-    const url = environment.baseUrl + '/reservations'
+    const url = environment.baseUrl + '/reservations/'
     return this.http.get<Reservation[]>(url);
   }
 }

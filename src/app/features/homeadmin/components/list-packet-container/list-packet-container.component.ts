@@ -81,8 +81,8 @@ export class ListPacketContainerComponent implements OnInit {
     
     this.packetService.createPacket(packetToSave).subscribe(
       result => {
-        console.log('PACCHETTO REGISTRATO!');
-        packetToSave.id = result.id
+        packetToSave.id = result
+        console.log(packetToSave.id)
         this.packetsList.push(packetToSave);
         alert('Pacchetto registrato!');
       },

@@ -19,7 +19,7 @@ export class UserService {
 
 
   public addUser(user: User): Observable<any> {
-    const url = environment.baseUrl + '/users/'
+    const url = environment.baseUrl + '/users'
     return this.http.post(url, user);
   }
 }
