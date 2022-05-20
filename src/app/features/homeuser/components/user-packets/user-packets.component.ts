@@ -43,8 +43,8 @@ export class UserPacketsComponent implements OnInit {
       (error) => {
         console.log(error);
       }
-    );
-  }
+      );
+    }
 
   ngOnInit(): void {
     this.route.parent?.params.subscribe(

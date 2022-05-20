@@ -17,9 +17,13 @@ export class UserService {
     return this.http.get<User[]>(url);
   }
 
-
   public addUser(user: User): Observable<any> {
     const url = environment.baseUrl + '/users'
     return this.http.post(url, user);
+  }
+
+  public findUserByEmail(mail: string): Observable<User> {
+    const url = environment.baseUrl + '/users/mail/' + mail
+    return this.http.get<User>(url);
   }
 }

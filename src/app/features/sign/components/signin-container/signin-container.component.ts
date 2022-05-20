@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { RoleEnum } from 'src/app/shared/enum/role-enum';
-import { User } from 'src/app/shared/model/user-model';
+import { SecurityUtils } from 'src/app/shared/utils/security.utils';
+
 
 
 @Component({
@@ -19,7 +21,7 @@ export class SigninContainerComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private UserService: UserService
+    private authService: AuthService
   ) {
 
   }
@@ -27,18 +29,14 @@ export class SigninContainerComponent implements OnInit {
   completeSigninForm(signinForm: NgForm) {
     this.insertedEmail = signinForm.value.campoEmail
     this.insertedPassword = signinForm.value.campoPassword
-    this.UserService.getAllUser().subscribe(
+    let digestMd5 = SecurityUtils.computeMd5(this.insertedPassword);
+    this.authService.login(this.insertedEmail, digestMd5).subscribe(
       result => {
-        for (let index = 0; index < result.length; index++) {
-          const user: User = result[index];
-          if (user.mail === this.insertedEmail && user.password === this.insertedPassword) {
-            this.incorrectForm = false
-            if (user.role === RoleEnum.GUEST) this.router.navigateByUrl('homeuser' + "/" + user.id)
-            if (user.role === RoleEnum.ADMIN) this.router.navigateByUrl('homeadmin')
-            return
-          } else {
-            this.incorrectForm = true
-          }
+        if (result == null) this.incorrectForm = true
+        else {
+          if (result.role === RoleEnum.GUEST) this.router.navigateByUrl('homeuser' + "/" + result.id)
+          if (result.role === RoleEnum.ADMIN) this.router.navigateByUrl('homeadmin')
+          this.incorrectForm = false
         }
       },
       error => {
@@ -55,3 +53,4 @@ export class SigninContainerComponent implements OnInit {
   }
 
 }
+

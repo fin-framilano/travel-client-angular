@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { RoleEnum } from 'src/app/shared/enum/role-enum';
 import { User } from 'src/app/shared/model/user-model';
+import { SecurityUtils } from 'src/app/shared/utils/security.utils';
 
 @Component({
   selector: 'fin-signup-container',
@@ -29,23 +30,17 @@ export class SignupContainerComponent implements OnInit {
 
   completeSignupForm(signupForm: NgForm) {
     this.insertedEmail = signupForm.value.campoEmail
-    this.userService.getAllUser().subscribe(
+    this.userService.findUserByEmail(this.insertedEmail).subscribe(
       result => {
-        for (let index = 0; index < result.length; index++) {
-          const user = result[index];
-          console.log(user.mail)
-          console.log(this.insertedEmail)
-          if (user.mail === this.insertedEmail) {
-            this.alreadyExist = true
-            return
-          }
-        }
-        if (!this.alreadyExist) {
-          const userToSave:User={
-            id:0,
-            mail:signupForm.value.campoEmail,
-            password:signupForm.value.campoPassword,
-            role:RoleEnum.GUEST
+        if (result != null) {
+          this.alreadyExist = true
+          return
+        } else {
+          const userToSave: User = {
+            id: 0,
+            mail: signupForm.value.campoEmail,
+            password: SecurityUtils.computeMd5(signupForm.value.campoPassword),
+            role: RoleEnum.GUEST
           }
           this.userService.addUser(userToSave).subscribe(
             result => {

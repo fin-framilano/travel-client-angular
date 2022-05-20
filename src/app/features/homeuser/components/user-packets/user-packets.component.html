@@ -1,8 +1,8 @@
 <fin-list-items 
-            [listOptions]= "['Seleziona']"
             [title]="'Pacchetti disponibili'"
-            [listItems] = "availablePacketsList"
             [listHeader] = "availablePacketsListHeaders"
+            [listItems] = "availablePacketsList"
             [listKeys] = " availablePacketsKeys"
+            [listOptions]= "['Seleziona']"
             (selectEvent)="selectHandler($event)"
 ></fin-list-items>
